@@ -1,6 +1,3 @@
-# test JDK version:     docker run --rm -t veny/jdk java -version
-# bash:                 docker run --rm -it veny/jdk bash
-
 FROM veny/centos
 MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 
