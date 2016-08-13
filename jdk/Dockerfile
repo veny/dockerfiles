@@ -1,4 +1,3 @@
-# build:                docker build -t veny/jdk ./jdk/
 # test JDK version:     docker run --rm -t veny/jdk java -version
 # bash:                 docker run --rm -it veny/jdk bash
 
