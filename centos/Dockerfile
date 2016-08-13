@@ -1,6 +1,3 @@
-# build:                docker build -t veny/centos ./centos/
-# bash:                 docker run --rm -it veny/centos bash X
-
 FROM centos:7
 MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 
