@@ -4,14 +4,22 @@ MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 ENV ORIENTDB_VERSION 2.2.7
 ENV ORIENTDB_DOWNLOAD_URL http://www.orientechnologies.com/download.php?email=unknown@unknown.com&file=orientdb-community-${ORIENTDB_VERSION}.tar.gz&os=linux
 ENV ORIENTDB_HOME /opt/orientdb
+ENV PATH $PATH:$ORIENTDB_HOME/bin
 
 ADD ${ORIENTDB_DOWNLOAD_URL} /tmp/orientdb.tar.gz
 
-RUN mkdir -p ${ORIENTDB_HOME}
-#RUN wget $ORIENTDB_DOWNLOAD_URL -O /tmp/orientdb-community.tar.gz
-#RUN echo "$ORIENTDB_CHECKSUM_SHA1 /tmp/orientdb-community.tar.gz" | sha1sum -c -
-RUN tar xvzf /tmp/orientdb.tar.gz --strip-components=1 --directory ${ORIENTDB_HOME}
-RUN rm -f /tmp/orientdb.tar.gz
-RUN rm -rf ${ORIENTDB_HOME}/databases/*
+RUN mkdir -p ${ORIENTDB_HOME} \
+        && tar xvzf /tmp/orientdb.tar.gz --strip-components=1 --directory ${ORIENTDB_HOME} \
+        && rm -f /tmp/orientdb.tar.gz \
+        && rm -rf ${ORIENTDB_HOME}/databases/*
 
-ENV PATH $PATH:$ORIENTDB_HOME/bin
+VOLUME ${ORIENTDB_HOME}/databases/
+
+#OrientDb binary
+EXPOSE 2424
+#OrientDb http
+EXPOSE 2480
+
+WORKDIR ${ORIENTDB_HOME}
+
+CMD ["./bin/server.sh"]
