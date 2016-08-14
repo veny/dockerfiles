@@ -13,12 +13,10 @@ RUN mkdir -p ${ORIENTDB_HOME} \
         && rm -f /tmp/orientdb.tar.gz \
         && rm -rf ${ORIENTDB_HOME}/databases/*
 
-VOLUME ${ORIENTDB_HOME}/databases/
+VOLUME ["${ORIENTDB_HOME}/backup", "${ORIENTDB_HOME}/config", "${ORIENTDB_HOME}/databases", "${ORIENTDB_HOME}/log"]
 
-#OrientDb binary
-EXPOSE 2424
-#OrientDb http
-EXPOSE 2480
+# binary, HTTP
+EXPOSE 2424 2480
 
 WORKDIR ${ORIENTDB_HOME}
 
