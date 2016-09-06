@@ -3,10 +3,8 @@ MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 
 # Make systemd aware about the fact that it runs inside a container.
 # Systemd is now included in both the centos:7 and centos:latest base containers, but it is not active by default.
-#See here for more info: https://hub.docker.com/_/centos/
+# See here for more info: https://hub.docker.com/_/centos/
 ENV container docker
-
-
 
 # update all repos
 RUN set -x \
