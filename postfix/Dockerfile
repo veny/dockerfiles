@@ -1,7 +1,7 @@
 FROM veny/centos
 MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 
-# for better understanding of syslog logging, see here:
+# For better understanding of syslog logging, see here:
 # http://unix.stackexchange.com/questions/205883/understand-logging-in-linux
 
 RUN set -x \
