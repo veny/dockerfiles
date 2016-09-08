@@ -14,4 +14,4 @@ COPY rsyslog.conf /etc/rsyslog.conf
 
 EXPOSE 25
 
-CMD ["sh", "-c", "/usr/sbin/postfix start ; rm -f /var/run/rsyslogd.pid ; /usr/sbin/rsyslogd -n"]
+CMD ["sh", "-c", "/usr/sbin/postfix start ; echo 'postfix started...' ; rm -f /var/run/rsyslogd.pid ; /usr/sbin/rsyslogd -n"]
