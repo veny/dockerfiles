@@ -13,5 +13,9 @@ RUN /usr/bin/newaliases \
 COPY rsyslog.conf /etc/rsyslog.conf
 
 EXPOSE 25
+VOLUME "/var/log"
 
-CMD ["sh", "-c", "/usr/sbin/postfix start ; echo 'postfix started...' ; rm -f /var/run/rsyslogd.pid ; /usr/sbin/rsyslogd -n"]
+COPY run.sh /
+RUN chmod +x /run.sh
+WORKDIR /
+CMD ["/run.sh"]
