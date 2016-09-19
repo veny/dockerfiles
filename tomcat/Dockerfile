@@ -13,10 +13,12 @@ RUN wget --no-cookies --no-check-certificate "$TOMCAT_DOWNLOAD_URL" -O /tmp/tomc
         && echo "$TOMCAT_CHECKSUM_SHA1 /tmp/tomcat.tar.gz" | sha1sum -c - \
         && mkdir -p ${CATALINA_HOME} \
         && tar xfvz /tmp/tomcat.tar.gz --strip-components=1 --directory ${CATALINA_HOME} \
+        && rm -rf $CATALINA_HOME/webapps/ROOT \
         && rm -rf $CATALINA_HOME/webapps/examples \
         && rm -rf $CATALINA_HOME/webapps/docs \
         && rm -f /tmp/tomcat.tar.gz
 
 WORKDIR $CATALINA_HOME
 EXPOSE 8080
+VOLUME ["${CATALINA_HOME}/logs", "${CATALINA_HOME}/webapps"]
 CMD ["catalina.sh", "run"]
