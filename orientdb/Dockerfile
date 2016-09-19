@@ -1,7 +1,7 @@
 FROM veny/jdk
 MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 
-ENV ORIENTDB_VERSION 2.2.8
+ENV ORIENTDB_VERSION 2.2.10
 ENV ORIENTDB_DOWNLOAD_URL http://www.orientechnologies.com/download.php?email=unknown@unknown.com&file=orientdb-community-${ORIENTDB_VERSION}.tar.gz&os=linux
 ENV ORIENTDB_HOME /opt/orientdb
 ENV PATH $PATH:$ORIENTDB_HOME/bin
