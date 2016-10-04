@@ -4,24 +4,13 @@
 set -e
 
 trap_term_signal() {
-    echo 'stopping ...'
+    echo "Caught SIGTERM signal, shutting down ..."
     /usr/sbin/postfix stop
     killall rsyslogd
-    exit 0
 }
-trap "trap_term_signal" SIGINT
-trap "trap_term_signal" SIGTERM
-trap "trap_term_signal" SIGKILL
+trap "trap_term_signal" SIGINT SIGTERM
 
 /usr/sbin/postfix start
-echo "postfix started..."
-
 rm -f /var/run/rsyslogd.pid
-/usr/sbin/rsyslogd
-echo "rsyslog started..."
-
-# wait forever
-while true
-do
-  tail -f /dev/null & wait ${!}
-done
+/usr/sbin/rsyslogd -n &
+wait

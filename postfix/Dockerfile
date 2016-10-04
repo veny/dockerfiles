@@ -19,3 +19,10 @@ COPY run.sh /
 RUN chmod +x /run.sh
 WORKDIR /
 CMD ["/run.sh"]
+
+# postconf -e "smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination"
+# mynetworks = localhost 127.0.0.1 85.13.109.195 belem 172.17.0.1
+# SMPT Auth:
+#  https://help.ubuntu.com/community/Postfix
+# https://github.com/muzili/docker-centos-postfix
+# https://github.com/eea/eea.docker.postfix
