@@ -20,6 +20,10 @@ RUN set -x \
         && yum -y install sudo nano vim wget telnet man yum-utils net-tools bind-utils psmisc tar curl lsof \
         && yum clean all
 
+# set the locale (en_US.UTF-8)
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 # prompt
 ENV PS1 "\[\e[1;33m\][centos] [\u@\h \w]$ \[\e[0m\]"
 # set correct time zone
