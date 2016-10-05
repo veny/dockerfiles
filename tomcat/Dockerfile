@@ -21,4 +21,5 @@ RUN wget --no-cookies --no-check-certificate "$TOMCAT_DOWNLOAD_URL" -O /tmp/tomc
 WORKDIR $CATALINA_HOME
 EXPOSE 8080
 VOLUME ["${CATALINA_HOME}/logs", "${CATALINA_HOME}/webapps"]
+
 CMD ["catalina.sh", "run"]
