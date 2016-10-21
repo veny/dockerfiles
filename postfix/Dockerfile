@@ -4,6 +4,9 @@ MAINTAINER Vaclav Sykora <vaclav.sykora@gmail.com>
 # For better understanding of syslog logging, see here:
 # http://unix.stackexchange.com/questions/205883/understand-logging-in-linux
 
+# Postfix SASL Howto
+# http://www.postfix.org/SASL_README.html
+
 RUN set -x \
         && yum -y install rsyslog postfix cyrus-saslcyrus-sasl cyrus-sasl-plain cyrus-sasl-md5 \
         && yum clean all \
@@ -22,8 +25,3 @@ VOLUME "/var/log"
 WORKDIR /
 
 CMD ["/run.sh"]
-
-# mynetworks = localhost 127.0.0.1 85.13.109.195 belem 172.17.0.1
-# SMPT Auth:
-# http://blog.penumbra.be/2010/04/authenticated-smtp-postfix/
-# http://www.postfix.org/SASL_README.html
